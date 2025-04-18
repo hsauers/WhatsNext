@@ -1,0 +1,61 @@
+Uninstall all versions of Python from Windows
+
+Install Python 3.12.1 (via download)
+
+Install flask package:
+  > pip3 install flask
+  Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.3 Werkzeug-3.0.1 blinker-1.7.0 click-8.1.7 colorama-0.4.6 flask-3.0.0 itsdangerous-2.1.2
+
+Upgrade pip:
+  > python3 -m pip install --upgrade pip
+  WARNING: The scripts pip.exe, pip3.12.exe and pip3.exe are installed in 'C:\Users\hsauers.34S4SV3\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+
+Install flask_api package:
+  > pip3 install flask_api
+  Successfully installed flask_api-3.1
+
+Run main app:
+  > python3 main.python3
+  ImportError: cannot import name 'url_decode_stream' from 'werkzeug.urls' (C:\Users\hsauers.34S4SV3\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfr
+
+Ensure a lower version of werkzeug is installed via requirements.txt: werkzeug==2.2.2
+  > pip3 install -r requirements.txt
+
+!! main.py runs!
+  > python3 main.py
+
+Try to run webapp.py
+  > python3 webapp.py
+  Error:
+    File "C:\Users\hsauers.34S4SV3\Documents\code\WhatsNext\webapp.py", line 203, in <module>
+    port = os.environ['PORT']
+           ~~~~~~~~~~^^^^^^^^
+  File "<frozen os>", line 685, in __getitem__
+  KeyError: 'PORT'
+
+Research: https://chat.openai.com/share/d2ef7a65-b18b-4627-a042-53ab753e8ebc
+
+Installed python-dotenv
+  > pip3 install install python-dotenv
+
+Created .env file containing:
+  PORT=4000
+
+Used VS Code F5 debugging to "launch" current app (webapp.py). This created a .vscode/launch.json folder/file. I also had to tell VS Code to use the python 3.12.1 interpreter, instead of the .venv one, which seemed to have an older version of python.
+
+I specified the envFile to use in launch.json
+  "envFile": "${workspaceFolder}/.env"
+Allowing the environment variables to be defined and set.
+
+Now, webapp.py runs without error, but still does not rturn results. It seems Google and Yelp API keys are needed.
+
+Issue, the request for the following URL returns a 404:
+http://localhost:4000/find?location=34217&category=american&radius=10&money=4
+  > Issue here (^), wrong port #. 
+
+? Do webapp.py (UI) and main.py (API) have to run on different ports?
+
+Yelp API seems to be working.
+It's not clear if code is wired up to use the Google API at all.
+! Use current location does not seem to work locally? or in Bing?

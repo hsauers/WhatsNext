@@ -6,6 +6,7 @@ from flask import (Flask,
                    render_template, url_for)
 from flask_api import status
 import yelp, google
+import os
 
 # Use Flask / etc to design a REST API for WhatsNext back-end.
 
@@ -113,6 +114,7 @@ def images():
 if __name__ == '__main__':
     # yelp.find_suggestions('orlando', 'burgers', 5, 2)
     port = 5000
+    # port = os.environ['PORT']
     if len(sys.argv) > 1:
         port = int(sys.argv[1])
     app.run(debug=False, host='0.0.0.0', port=port)

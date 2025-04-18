@@ -2,3 +2,5 @@ flask
 flask_api
 requests
 flask_compress
+flask_login
+werkzeug==2.2.2

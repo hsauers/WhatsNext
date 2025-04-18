@@ -61,7 +61,8 @@ def get_restaurants(location="32816", category="asian", radius="15", price="4"):
   # build html
   
   # create request url
-  api_url = "http://localhost:4000/find?"
+  port = "5000"
+  api_url = "http://localhost:" + port + "/find?"
   api_url += "location=" + location + "&category=" + category + "&radius=" + radius + "&money=" + price
 
   print(api_url)
