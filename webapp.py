@@ -51,7 +51,8 @@ def restaurants():
       assert 'distance' in session
 
     return get_restaurants(location=session['location'], category=session['category'], radius=session['distance'], price=session['price'])
-  except:
+  except Exception as e:
+    print(f"An error occurred: {e}")
     return "<script>window.location.href='start.html';</script>"
 
 

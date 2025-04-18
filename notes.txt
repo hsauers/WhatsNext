@@ -48,7 +48,7 @@ I specified the envFile to use in launch.json
   "envFile": "${workspaceFolder}/.env"
 Allowing the environment variables to be defined and set.
 
-Now, webapp.py runs without error, but still does not rturn results. It seems Google and Yelp API keys are needed.
+Now, webapp.py runs without error, but still does not return results. It seems Google and Yelp API keys are needed.
 
 Issue, the request for the following URL returns a 404:
 http://localhost:4000/find?location=34217&category=american&radius=10&money=4
@@ -59,3 +59,24 @@ http://localhost:4000/find?location=34217&category=american&radius=10&money=4
 Yelp API seems to be working.
 It's not clear if code is wired up to use the Google API at all.
 ! Use current location does not seem to work locally? or in Bing?
+
+4.18.2025
+MUST launch both webapp.py and main.py for UI and search (backend) to work.
+python3 main.py
+python3 webapp.py
+
+Getting results now -- not sure if it's using Yelp or Google. From notes above, I'l assume Yelp.
+How to find out? Icon under photo has Yelp Url.
+
+Deployed (from VSCode) to Azure App Server - Basic tier.
+  + https://whatsnext-h9bsdrcjffeteva3.eastus2-01.azurewebsites.net/
+  + Something is not configured right since app is not running.
+  + Ref: https://learn.microsoft.com/en-us/azure/app-service/configure-language-python#container-startup-process?appservice=startup
+
+To Dos:
++ Fix Google login
++ Figure out how to launch both main.py and webapp.py from VSCode run/debug - .vscode/launch.json?
++ Figure out how to better configure ports in use.
++ Deploy to free-tier Azure VM???
+  - No free tier, only basic; see above.
++ get back whatsnext.fyi 
